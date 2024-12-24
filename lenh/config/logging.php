@@ -35,6 +35,7 @@ return [
         'channel' => env('LOG_DEPRECATIONS_CHANNEL', 'null'),
         'trace' => env('LOG_DEPRECATIONS_TRACE', false),
     ],
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -51,12 +52,12 @@ return [
     */
 
     'channels' => [
-
         'stack' => [
             'driver' => 'stack',
-            'channels' => explode(',', env('LOG_STACK', 'single')),
+            'channels' => ['single', 'slack'],
             'ignore_exceptions' => false,
         ],
+
 
         'single' => [
             'driver' => 'single',
@@ -126,7 +127,11 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+        
+        
 
     ],
+    
 
+    
 ];

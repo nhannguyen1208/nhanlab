@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Category;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class CategorySeeder extends Seeder
 {
@@ -30,9 +31,11 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        foreach ($this->getCategories() as $category) {
-            Category::create($category);
+        for ($i = 1; $i <= 1000; $i++) {
+            Category::create([
+                'name' => 'Category ' . $i,
+                'description' => Str::random(50),
+            ]);
         }
     }
 }
-
